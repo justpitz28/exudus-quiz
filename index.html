@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exodus Lern-Quiz</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #f4f7f6; }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); padding: 15px; display: flex; justify-content: center; }
+        .card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+        h1 { color: var(--primary); text-align: center; font-size: 1.4rem; margin-bottom: 20px; }
+        .q-block { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 10px; }
+        p { font-weight: bold; margin-top: 0; }
+        label { display: block; background: #f9f9f9; padding: 12px; margin: 8px 0; border-radius: 8px; cursor: pointer; border: 1px solid #ddd; }
+        input { margin-right: 10px; }
+        button { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+        #res { text-align: center; margin-top: 20px; font-size: 1.2rem; font-weight: bold; color: #27ae60; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>📖 Exodus Master-Quiz</h1>
+    <form id="exodusForm">
+        <div class="q-block">
+            <p>1. Was bedeutet JHWH?</p>
+            <label><input type="radio" name="f1" value="1"> Ich bin, der ich bin (Begleitung)</label>
+            <label><input type="radio" name="f1" value="0"> Der ferne Weltenherrscher</label>
+        </div>
+        <div class="q-block">
+            <p>2. Warum der Umweg durch die Wüste (M7)?</p>
+            <label><input type="radio" name="f2" value="1"> Um Krieg mit den Philistern zu vermeiden</label>
+            <label><input type="radio" name="f2" value="0"> Weil Mose keine Karte hatte</label>
+        </div>
+        <div class="q-block">
+            <p>3. Was leistet die Feuersäule nachts?</p>
+            <label><input type="radio" name="f3" value="1"> Licht, Schutz und Orientierung</label>
+            <label><input type="radio" name="f3" value="0"> Sie dient als Kochstelle</label>
+        </div>
+        <div class="q-block">
+            <p>4. Welches Gottesbild zeigt Ex 14 (Schilfmeer)?</p>
+            <label><input type="radio" name="f4" value="1"> Befreiend für Israel / Bedrohlich für Feinde</label>
+            <label><input type="radio" name="f4" value="0"> Gott greift niemals gewaltsam ein</label>
+        </div>
+        <button type="button" onclick="calc()">Ergebnis prüfen</button>
+    </form>
+    <div id="res"></div>
+</div>
+<script>
+    function calc() {
+        let s = 0;
+        let total = 4;
+        for(let i=1; i<=total; i++) {
+            if(document.querySelector('input[name="f'+i+'"]:checked')?.value == "1") s++;
+        }
+        document.getElementById('res').innerText = "Du hast " + s + " von " + total + " Fragen richtig!";
+    }
+</script>
+</body>
+</html>
